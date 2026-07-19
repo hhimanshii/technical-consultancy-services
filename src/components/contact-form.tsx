@@ -1,19 +1,35 @@
+"use client"
+
+import type { FormEvent } from "react"
 import { ArrowRight } from "lucide-react"
 
+const contactEmail = "tcsdoon@gmail.com"
+
 export function ContactForm() {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget)
+    const name = String(formData.get("name") || "")
+    const email = String(formData.get("email") || "")
+    const phone = String(formData.get("phone") || "")
+    const message = String(formData.get("message") || "")
+
+    const subject = encodeURIComponent("Project enquiry")
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
+    )
+
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`
+  }
+
   return (
-    <form
-      action="mailto:"
-      method="post"
-      encType="text/plain"
-      className="grid gap-4"
-    >
+    <form onSubmit={handleSubmit} noValidate className="grid gap-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2">
           <span className="text-sm font-bold text-brand-navy">Name</span>
           <input
             name="name"
-            required
             className="h-11 rounded-md border border-input bg-white px-3 text-sm outline-none transition-colors focus:border-brand-blue"
             placeholder="Your name"
           />
@@ -23,7 +39,6 @@ export function ContactForm() {
           <input
             name="email"
             type="email"
-            required
             className="h-11 rounded-md border border-input bg-white px-3 text-sm outline-none transition-colors focus:border-brand-blue"
             placeholder="you@example.com"
           />
@@ -43,7 +58,6 @@ export function ContactForm() {
         <span className="text-sm font-bold text-brand-navy">Message</span>
         <textarea
           name="message"
-          required
           rows={5}
           className="resize-none rounded-md border border-input bg-white px-3 py-3 text-sm outline-none transition-colors focus:border-brand-blue"
           placeholder="Tell us about your project, location, scope, or requirement."
