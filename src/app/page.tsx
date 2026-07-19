@@ -19,7 +19,6 @@ import {
   Waves,
 } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/contact-form"
 import { clients } from "@/lib/clients"
 import { services } from "@/lib/services"
@@ -214,10 +213,13 @@ export default function Home() {
             ))}
           </ul>
 
-          <Button className="group hidden bg-primary text-primary-foreground hover:bg-brand-blue lg:inline-flex">
+          <a
+            href="#contact"
+            className="group hidden h-10 items-center justify-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-all hover:bg-brand-blue lg:inline-flex"
+          >
             Get in Touch
             <ArrowRight className="transition-transform group-hover:translate-x-1" data-icon="inline-end" />
-          </Button>
+          </a>
           <details className="group/mobile relative lg:hidden">
             <summary
               className="flex size-10 list-none items-center justify-center rounded-lg text-brand-navy transition-colors hover:bg-brand-light [&::-webkit-details-marker]:hidden"
@@ -280,7 +282,6 @@ export default function Home() {
               loop
               playsInline
               preload={index === 0 ? "auto" : "metadata"}
-              poster="/company-logo.png"
               aria-hidden="true"
             >
               <source src={src} type="video/mp4" />
@@ -306,21 +307,20 @@ export default function Home() {
             </p>
 
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                size="lg"
-                className="group h-12 bg-primary px-8 text-base font-bold text-primary-foreground hover:bg-brand-blue"
+              <a
+                href="#contact"
+                className="group inline-flex h-12 items-center justify-center gap-1.5 rounded-lg bg-primary px-8 text-base font-bold text-primary-foreground transition-all hover:bg-brand-blue"
               >
                 Plan a Consultation
                 <ArrowRight className="transition-transform group-hover:translate-x-1.5" data-icon="inline-end" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="group h-12 border-2 border-white/35 bg-white/8 px-8 text-base font-bold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
+              </a>
+              <a
+                href="#contact"
+                className="group inline-flex h-12 items-center justify-center gap-1.5 rounded-lg border-2 border-white/35 bg-white/8 px-8 text-base font-bold text-white backdrop-blur-sm transition-all hover:bg-white/15 hover:text-white"
               >
                 Explore Sectors
                 <ArrowRight className="transition-transform group-hover:translate-x-1.5" data-icon="inline-end" />
-              </Button>
+              </a>
             </div>
           </div>
         </div>
