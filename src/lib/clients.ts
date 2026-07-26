@@ -12,8 +12,8 @@ export const clients = [
     logo: "/client-nhai.png",
   },
   {
-    name: "UP PWD",
-    logo: "/client-up-pwd.png",
+    name: "UK PWD",
+    logo: "/client-uk-pwd.png",
   },
   {
     name: "Delhi PWD",
